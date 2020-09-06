@@ -9,7 +9,11 @@
 import UIKit
 
 class celdaContacto: UITableViewCell {
-
+    @IBOutlet weak var lblNombre: UILabel!
+    @IBOutlet weak var lblApellido: UILabel!
+    @IBOutlet weak var lblCorreo: UILabel!
+    @IBOutlet weak var lblTelefono: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,6 +23,11 @@ class celdaContacto: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+        if selected {
+            contentView.backgroundColor = UIColor.lightGray
+        } else {
+            contentView.backgroundColor = UIColor.lightGray
+        }
     }
 
 }
