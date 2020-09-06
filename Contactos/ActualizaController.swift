@@ -32,7 +32,7 @@ class ActualizaController: BaseController {
             if (correoValido) {
                 // Insertando en la base de datos
                 let uid = Auth.auth().currentUser?.uid
-                ref = Database.database().reference().child("Usuarios").child(uid!).child(keyContacto)
+                ref = Database.database().reference().child("Contactos").child(uid!).child(keyContacto)
                 ref.updateChildValues(["nombre":nombre!, "apellido":apellido!, "correo":correo!, "telefono":telefono!], withCompletionBlock: { (error, databaseReference) in
                     
                     let alertController = UIAlertController(title: "¡Listo!", message: "\nContacto actualizado correctamente.", preferredStyle: .alert)
@@ -83,7 +83,7 @@ class ActualizaController: BaseController {
     
     override func viewWillAppear(_ animated: Bool) {
         let uid = Auth.auth().currentUser?.uid
-        ref = Database.database().reference().child("Usuarios").child(uid!).child(keyContacto)
+        ref = Database.database().reference().child("Contactos").child(uid!).child(keyContacto)
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             
             let datos = snapshot.value as? NSDictionary

@@ -43,7 +43,7 @@ class InicioController: BaseController {
             if (correoValido) {
                 // Insertando en la base de datos
                 let uid = Auth.auth().currentUser?.uid
-                ref = Database.database().reference().child("Usuarios").child(uid!).childByAutoId()
+                ref = Database.database().reference().child("Contactos").child(uid!).childByAutoId()
                 ref.setValue(["nombre":nombre!, "apellido":apellido!, "correo":correo!, "telefono":telefono!], withCompletionBlock: { (error, databaseReference) in
                     
                     let alertController = UIAlertController(title: "¡Listo!", message: "\nContacto guardado exitosamente.", preferredStyle: .alert)
@@ -144,7 +144,7 @@ class InicioController: BaseController {
     
     func ConsultaContactos() {
         let uid = Auth.auth().currentUser?.uid
-        ref = Database.database().reference().child("Usuarios").child(uid!)
+        ref = Database.database().reference().child("Contactos").child(uid!)
         ref.observe(DataEventType .value, with: { (snap) in
             
             self.arrayKeys.removeAll()
@@ -180,7 +180,7 @@ class InicioController: BaseController {
     
     func BuscaContacto(palabras: String) {
         let uid = Auth.auth().currentUser?.uid
-        ref = Database.database().reference().child("Usuarios").child(uid!)
+        ref = Database.database().reference().child("Contactos").child(uid!)
         ref.observeSingleEvent(of: .value, with: { (snap) in
             
             self.arrayKeys.removeAll()
@@ -236,15 +236,14 @@ extension InicioController : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let displayVC : ActualizaController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ActualizaController") as! ActualizaController
-        displayVC.keyContacto = arrayKeys[indexPath.row]
+        let displayVC : ChatController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ChatController") as! ChatController
+        displayVC.correoDestino = self.arrayCorreos[indexPath.row]
         self.present(displayVC, animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
-        let borrar = UITableViewRowAction(style: .destructive, title: "Borrar") { (action, indexPath) in
+        let borrar = UITableViewRowAction(style: .normal, title: "Borrar") { (action, indexPath) in
             let alertController = UIAlertController(title: "¡Atención!", message: "\n¿Deseas eliminar este contacto?", preferredStyle: .alert)
             
             let okAction = UIAlertAction(title: "Sí", style: UIAlertAction.Style.default) {
@@ -253,7 +252,7 @@ extension InicioController : UITableViewDelegate, UITableViewDataSource {
                 let keyContacto = self.arrayKeys[indexPath.row]
                 
                 let uid = Auth.auth().currentUser?.uid
-                self.ref = Database.database().reference().child("Usuarios").child(uid!).child(keyContacto)
+                self.ref = Database.database().reference().child("Contactos").child(uid!).child(keyContacto)
                 self.ref.removeValue()
             }
             
@@ -268,9 +267,18 @@ extension InicioController : UITableViewDelegate, UITableViewDataSource {
             self.present(alertController, animated: true, completion: nil)
         }
         
-        borrar.backgroundColor = UIColor(red: 0/255, green: 63/255, blue: 97/255, alpha: 1.0)
+        borrar.backgroundColor = UIColor.red
         
-        return [borrar]
+        let editar = UITableViewRowAction(style: .normal, title: "Editar") { (action, indexPath) in
+            
+            let displayVC : ActualizaController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ActualizaController") as! ActualizaController
+            displayVC.keyContacto = self.arrayKeys[indexPath.row]
+            self.present(displayVC, animated: true, completion: nil)
+        }
+        
+        editar.backgroundColor = UIColor.orange
+        
+        return [borrar, editar]
     }
 }
 

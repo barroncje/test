@@ -504,6 +504,69 @@
             </objects>
             <point key="canvasLocation" x="2898" y="116"/>
         </scene>
+        <!--Chat Controller-->
+        <scene sceneID="Mx3-UV-Xu1">
+            <objects>
+                <viewController storyboardIdentifier="ChatController" id="TEl-zt-0ie" customClass="ChatController" customModule="Contactos" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rvF-NM-hnu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RAO-AU-pmN">
+                                <rect key="frame" x="24" y="16" width="327" height="208"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="208" id="11S-3P-8ne"/>
+                                </constraints>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tkj-LZ-yHG">
+                                <rect key="frame" x="24" y="296" width="327" height="50"/>
+                                <color key="backgroundColor" red="0.22719553109999999" green="0.51461797949999999" blue="0.46666204929999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="QIy-Ue-td9"/>
+                                </constraints>
+                                <state key="normal" title="Enviar mensaje">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnEnviarMensaje:" destination="TEl-zt-0ie" eventType="touchUpInside" id="aAH-mb-DpS"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mensaje" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pop-fV-D6t">
+                                <rect key="frame" x="24" y="240" width="327" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="IFx-Ex-pvE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="5Oo-En-RaW" firstAttribute="trailing" secondItem="Pop-fV-D6t" secondAttribute="trailing" constant="24" id="12Q-w2-NIk"/>
+                            <constraint firstItem="RAO-AU-pmN" firstAttribute="top" secondItem="5Oo-En-RaW" secondAttribute="top" constant="16" id="6me-Yv-BW1"/>
+                            <constraint firstItem="Pop-fV-D6t" firstAttribute="top" secondItem="RAO-AU-pmN" secondAttribute="bottom" constant="16" id="BXN-q0-6Ke"/>
+                            <constraint firstItem="5Oo-En-RaW" firstAttribute="trailing" secondItem="tkj-LZ-yHG" secondAttribute="trailing" constant="24" id="Nag-qQ-coz"/>
+                            <constraint firstItem="Pop-fV-D6t" firstAttribute="leading" secondItem="5Oo-En-RaW" secondAttribute="leading" constant="24" id="PKk-B7-AtU"/>
+                            <constraint firstItem="tkj-LZ-yHG" firstAttribute="top" secondItem="Pop-fV-D6t" secondAttribute="bottom" constant="16" id="SJC-mw-JRA"/>
+                            <constraint firstItem="5Oo-En-RaW" firstAttribute="trailing" secondItem="RAO-AU-pmN" secondAttribute="trailing" constant="24" id="UzX-Pd-whL"/>
+                            <constraint firstItem="tkj-LZ-yHG" firstAttribute="leading" secondItem="5Oo-En-RaW" secondAttribute="leading" constant="24" id="oCi-6O-7fP"/>
+                            <constraint firstItem="RAO-AU-pmN" firstAttribute="leading" secondItem="5Oo-En-RaW" secondAttribute="leading" constant="24" id="yhM-76-5gU"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="5Oo-En-RaW"/>
+                    </view>
+                    <connections>
+                        <outlet property="txtMensaje" destination="Pop-fV-D6t" id="pAZ-Lt-F48"/>
+                        <outlet property="txtViewHistorial" destination="RAO-AU-pmN" id="H0q-tG-Gau"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2H7-7i-AMS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3594" y="116"/>
+        </scene>
     </scenes>
     <resources>
         <image name="contacto" width="128" height="128"/>

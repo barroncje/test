@@ -35,6 +35,10 @@ class RegistroController: BaseController {
                                 //Enviando el email de verificación
                                 Auth.auth().currentUser?.sendEmailVerification { (error) in
                                     if(error == nil){
+                                        // Guardo el correo del usuario
+                                        self.ref = Database.database().reference().child("Usuarios").child(uid!)
+                                        self.ref.setValue(["correo":correo!])
+                                        
                                         let alertController = UIAlertController(title: "¡Listo!", message: "\nRevisa tu bandeja de entrada, se ha enviado un mail de verificación.", preferredStyle: .alert)
                                         
                                         let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {

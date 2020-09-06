@@ -21,6 +21,7 @@
 		44F378172504692D00035C8B /* BaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F378162504692D00035C8B /* BaseController.swift */; };
 		44F378192504726F00035C8B /* celdaContacto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F378182504726F00035C8B /* celdaContacto.swift */; };
 		44F3781B2504A61D00035C8B /* ActualizaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F3781A2504A61D00035C8B /* ActualizaController.swift */; };
+		44F3781D250564FA00035C8B /* ChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F3781C250564FA00035C8B /* ChatController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		44F378162504692D00035C8B /* BaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseController.swift; sourceTree = "<group>"; };
 		44F378182504726F00035C8B /* celdaContacto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = celdaContacto.swift; sourceTree = "<group>"; };
 		44F3781A2504A61D00035C8B /* ActualizaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActualizaController.swift; sourceTree = "<group>"; };
+		44F3781C250564FA00035C8B /* ChatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatController.swift; sourceTree = "<group>"; };
 		4E1A948C5518272A98C2F566 /* Pods-Contactos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Contactos.debug.xcconfig"; path = "Target Support Files/Pods-Contactos/Pods-Contactos.debug.xcconfig"; sourceTree = "<group>"; };
 		DA7C01C21CB2AA25C464253D /* Pods_Contactos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Contactos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -91,6 +93,7 @@
 				44F37814250465A700035C8B /* InicioController.swift */,
 				44F378182504726F00035C8B /* celdaContacto.swift */,
 				44F3781A2504A61D00035C8B /* ActualizaController.swift */,
+				44F3781C250564FA00035C8B /* ChatController.swift */,
 			);
 			path = Contactos;
 			sourceTree = "<group>";
@@ -231,6 +234,7 @@
 				44F37815250465A700035C8B /* InicioController.swift in Sources */,
 				44F377FF25045C6600035C8B /* ViewController.swift in Sources */,
 				44F378192504726F00035C8B /* celdaContacto.swift in Sources */,
+				44F3781D250564FA00035C8B /* ChatController.swift in Sources */,
 				44F378172504692D00035C8B /* BaseController.swift in Sources */,
 				44F377FB25045C6600035C8B /* AppDelegate.swift in Sources */,
 				44F3781B2504A61D00035C8B /* ActualizaController.swift in Sources */,
