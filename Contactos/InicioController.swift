@@ -29,6 +29,7 @@ class InicioController: BaseController {
     @IBOutlet weak var txtCorreo: UITextField!
     @IBOutlet weak var txtTelefono: UITextField!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var txtBuscar: UITextField!
     
     // IB Actions
     @IBAction func btnGuardarContacto(_ sender: UIButton) {
@@ -91,6 +92,8 @@ class InicioController: BaseController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        txtBuscar.delegate = self
+        
         // Para ocultar el teclado
         let gesture:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.viewTapped(_:)))
         gesture.cancelsTouchesInView = false
@@ -116,16 +119,18 @@ class InicioController: BaseController {
         viewMarcadorContactos.backgroundColor = .clear
         
         stackViewNuevo.isHidden = false
+        txtBuscar.isHidden = true
         tableView.isHidden = true
     }
     
     @objc func viewContactosTapped(_ recognizer: UITapGestureRecognizer) {
         
-        self.view.endEditing(true)
+        txtBuscar.becomeFirstResponder()
         
         viewMarcadorContactos.backgroundColor = .darkGray
         viewMarcadorNuevo.backgroundColor = .clear
         
+        txtBuscar.isHidden = false
         tableView.isHidden = false
         stackViewNuevo.isHidden = true
         
@@ -165,6 +170,46 @@ class InicioController: BaseController {
                     self.arrayTelefonos.append(telefono)
                     
                     self.tableView.reloadData()
+                }
+            } else {
+                self.tableView.reloadData()
+            }
+            
+        })
+    }
+    
+    func BuscaContacto(palabras: String) {
+        let uid = Auth.auth().currentUser?.uid
+        ref = Database.database().reference().child("Usuarios").child(uid!)
+        ref.observeSingleEvent(of: .value, with: { (snap) in
+            
+            self.arrayKeys.removeAll()
+            self.arrayNombres.removeAll()
+            self.arrayApellidos.removeAll()
+            self.arrayCorreos.removeAll()
+            self.arrayTelefonos.removeAll()
+            
+            if (snap.exists()) {
+                for rest in snap.children.allObjects as! [DataSnapshot] {
+                    let datos = rest.value as? NSDictionary
+                    
+                    let nombre = datos?["nombre"] as? String ?? ""
+                    
+                    if nombre.contains(palabras) {
+                        let keyContacto = rest.key
+                        let nombre = datos?["nombre"] as? String ?? ""
+                        let apellido = datos?["apellido"] as? String ?? ""
+                        let correo = datos?["correo"] as? String ?? ""
+                        let telefono = datos?["telefono"] as? String ?? ""
+                        
+                        self.arrayKeys.append(keyContacto)
+                        self.arrayNombres.append(nombre)
+                        self.arrayApellidos.append(apellido)
+                        self.arrayCorreos.append(correo)
+                        self.arrayTelefonos.append(telefono)
+                        
+                        self.tableView.reloadData()
+                    }
                 }
             } else {
                 self.tableView.reloadData()
@@ -226,5 +271,21 @@ extension InicioController : UITableViewDelegate, UITableViewDataSource {
         borrar.backgroundColor = UIColor(red: 0/255, green: 63/255, blue: 97/255, alpha: 1.0)
         
         return [borrar]
+    }
+}
+
+extension InicioController : UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let palabras = txtBuscar.text
+        
+        if (palabras!.count > 0) {
+            BuscaContacto(palabras: palabras!)
+        } else {
+            ConsultaContactos()
+        }
+        
+        self.view.endEditing(true)
+        
+        return false
     }
 }

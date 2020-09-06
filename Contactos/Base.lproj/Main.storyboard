@@ -321,8 +321,16 @@
                                     <constraint firstAttribute="height" constant="274" id="RYS-Qm-dGQ"/>
                                 </constraints>
                             </stackView>
+                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Buscar" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eNP-D5-Auk">
+                                <rect key="frame" x="24" y="82" width="327" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="mpl-a1-dEg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                            </textField>
                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="128" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uOo-GU-eGb">
-                                <rect key="frame" x="24" y="82" width="327" height="561"/>
+                                <rect key="frame" x="24" y="138" width="327" height="505"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="celdaContacto" rowHeight="128" id="qgj-vO-tJh" customClass="celdaContacto" customModule="Contactos" customModuleProvider="target">
@@ -393,13 +401,16 @@
                             <constraint firstItem="uOo-GU-eGb" firstAttribute="leading" secondItem="JZr-P6-1aH" secondAttribute="leading" constant="24" id="4xQ-9k-9ST"/>
                             <constraint firstItem="UYk-uV-1Mh" firstAttribute="leading" secondItem="JZr-P6-1aH" secondAttribute="leading" constant="24" id="CRP-Rc-8xk"/>
                             <constraint firstItem="JZr-P6-1aH" firstAttribute="trailing" secondItem="3IT-Qo-lwE" secondAttribute="trailing" constant="24" id="KyK-Lu-PYJ"/>
+                            <constraint firstItem="uOo-GU-eGb" firstAttribute="top" secondItem="eNP-D5-Auk" secondAttribute="bottom" constant="16" id="RbC-73-EV5"/>
                             <constraint firstItem="JZr-P6-1aH" firstAttribute="trailing" secondItem="UYk-uV-1Mh" secondAttribute="trailing" constant="24" id="TZb-Yn-7gm"/>
-                            <constraint firstItem="uOo-GU-eGb" firstAttribute="top" secondItem="UYk-uV-1Mh" secondAttribute="bottom" constant="16" id="Xgc-iB-7vJ"/>
                             <constraint firstItem="3IT-Qo-lwE" firstAttribute="leading" secondItem="JZr-P6-1aH" secondAttribute="leading" constant="24" id="aL7-4f-YwV"/>
                             <constraint firstItem="JZr-P6-1aH" firstAttribute="trailing" secondItem="uOo-GU-eGb" secondAttribute="trailing" constant="24" id="b1j-2d-X5q"/>
                             <constraint firstItem="3IT-Qo-lwE" firstAttribute="top" secondItem="UYk-uV-1Mh" secondAttribute="bottom" constant="16" id="hkf-0Z-Fd5"/>
                             <constraint firstItem="JZr-P6-1aH" firstAttribute="bottom" secondItem="uOo-GU-eGb" secondAttribute="bottom" constant="24" id="jj5-jZ-zh8"/>
                             <constraint firstItem="UYk-uV-1Mh" firstAttribute="top" secondItem="JZr-P6-1aH" secondAttribute="top" constant="16" id="lJW-bY-2ub"/>
+                            <constraint firstItem="eNP-D5-Auk" firstAttribute="top" secondItem="UYk-uV-1Mh" secondAttribute="bottom" constant="16" id="r0s-wm-Qwb"/>
+                            <constraint firstItem="eNP-D5-Auk" firstAttribute="leading" secondItem="JZr-P6-1aH" secondAttribute="leading" constant="24" id="tQk-Nr-HCv"/>
+                            <constraint firstItem="JZr-P6-1aH" firstAttribute="trailing" secondItem="eNP-D5-Auk" secondAttribute="trailing" constant="24" id="xFd-Tv-FoT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JZr-P6-1aH"/>
                     </view>
@@ -407,6 +418,7 @@
                         <outlet property="stackViewNuevo" destination="3IT-Qo-lwE" id="DQh-X4-kt4"/>
                         <outlet property="tableView" destination="uOo-GU-eGb" id="fUF-yc-L4G"/>
                         <outlet property="txtApellido" destination="4yG-Ol-FEY" id="oFD-Fk-8GK"/>
+                        <outlet property="txtBuscar" destination="eNP-D5-Auk" id="CMa-dz-3i7"/>
                         <outlet property="txtCorreo" destination="okk-8A-Mfl" id="nDE-Wh-E6k"/>
                         <outlet property="txtNombre" destination="nvt-lu-OXV" id="laN-ft-NMd"/>
                         <outlet property="txtTelefono" destination="ppq-4G-c6K" id="VaK-PY-ftj"/>
