@@ -321,9 +321,9 @@
                                     <constraint firstAttribute="height" constant="274" id="RYS-Qm-dGQ"/>
                                 </constraints>
                             </stackView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="128" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uOo-GU-eGb">
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="128" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uOo-GU-eGb">
                                 <rect key="frame" x="24" y="82" width="327" height="561"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="celdaContacto" rowHeight="128" id="qgj-vO-tJh" customClass="celdaContacto" customModule="Contactos" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="327" height="128"/>
@@ -378,7 +378,6 @@
                                                 <constraint firstAttribute="trailing" secondItem="myJ-5w-nnj" secondAttribute="trailing" constant="8" id="wdB-Zr-DgH"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="lblApellido" destination="cN1-Xv-042" id="Xnn-Xd-giR"/>
                                             <outlet property="lblCorreo" destination="vkq-nu-SP7" id="IQI-To-Gqo"/>
@@ -420,6 +419,78 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zki-S0-jiv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2200.8000000000002" y="115.59220389805098"/>
+        </scene>
+        <!--Actualiza Controller-->
+        <scene sceneID="UwD-ZZ-ker">
+            <objects>
+                <viewController storyboardIdentifier="ActualizaController" id="b81-B8-Llz" customClass="ActualizaController" customModule="Contactos" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="T3p-EF-bbd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="VQu-0x-UvD">
+                                <rect key="frame" x="24" y="16" width="327" height="208"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nombre" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S8Q-2Z-Amc">
+                                        <rect key="frame" x="0.0" y="0.0" width="327" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Apellido" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m3k-FZ-q4l">
+                                        <rect key="frame" x="0.0" y="56" width="327" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Correo electrónico" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KpD-qR-bIj">
+                                        <rect key="frame" x="0.0" y="112" width="327" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Teléfono" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wRB-M7-1OE">
+                                        <rect key="frame" x="0.0" y="168" width="327" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="208" id="ZIW-gP-CKO"/>
+                                </constraints>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mM6-60-Vn6">
+                                <rect key="frame" x="24" y="240" width="327" height="50"/>
+                                <color key="backgroundColor" red="0.22719553109999999" green="0.51461797949999999" blue="0.46666204929999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="bXl-6M-cAO"/>
+                                </constraints>
+                                <state key="normal" title="Actualizar contacto">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnActualizar:" destination="b81-B8-Llz" eventType="touchUpInside" id="5h0-ll-LXY"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="VQu-0x-UvD" firstAttribute="top" secondItem="LEb-4O-Tu5" secondAttribute="top" constant="16" id="0y9-mO-uGP"/>
+                            <constraint firstItem="LEb-4O-Tu5" firstAttribute="trailing" secondItem="mM6-60-Vn6" secondAttribute="trailing" constant="24" id="Ptw-pO-gO3"/>
+                            <constraint firstItem="VQu-0x-UvD" firstAttribute="leading" secondItem="T3p-EF-bbd" secondAttribute="leading" constant="24" id="Rud-7n-kut"/>
+                            <constraint firstItem="LEb-4O-Tu5" firstAttribute="trailing" secondItem="VQu-0x-UvD" secondAttribute="trailing" constant="24" id="eYu-oc-bHx"/>
+                            <constraint firstItem="mM6-60-Vn6" firstAttribute="top" secondItem="VQu-0x-UvD" secondAttribute="bottom" constant="16" id="jBx-Uc-3cw"/>
+                            <constraint firstItem="mM6-60-Vn6" firstAttribute="leading" secondItem="LEb-4O-Tu5" secondAttribute="leading" constant="24" id="ke5-MR-H1T"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="LEb-4O-Tu5"/>
+                    </view>
+                    <connections>
+                        <outlet property="txtApellido" destination="m3k-FZ-q4l" id="G17-AO-SD5"/>
+                        <outlet property="txtCorreo" destination="KpD-qR-bIj" id="Qq6-QT-pcs"/>
+                        <outlet property="txtNombre" destination="S8Q-2Z-Amc" id="B25-Mh-vun"/>
+                        <outlet property="txtTelefono" destination="wRB-M7-1OE" id="u1p-no-7xm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NOK-vC-a6q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2898" y="116"/>
         </scene>
     </scenes>
     <resources>

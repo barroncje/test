@@ -93,6 +93,7 @@ class InicioController: BaseController {
         
         // Para ocultar el teclado
         let gesture:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.viewTapped(_:)))
+        gesture.cancelsTouchesInView = false
         self.view.addGestureRecognizer(gesture)
 
         let gesture2:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.viewNuevoTapped(_:)))
@@ -178,10 +179,6 @@ extension InicioController : UITableViewDelegate, UITableViewDataSource {
         return arrayKeys.count
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let celda = tableView.dequeueReusableCell(withIdentifier: "celdaContacto", for: indexPath) as! celdaContacto
         
@@ -193,38 +190,37 @@ extension InicioController : UITableViewDelegate, UITableViewDataSource {
         return celda
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let displayVC : ActualizaController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ActualizaController") as! ActualizaController
+        displayVC.keyContacto = arrayKeys[indexPath.row]
+        self.present(displayVC, animated: true, completion: nil)
+    }
+    
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
         let borrar = UITableViewRowAction(style: .destructive, title: "Borrar") { (action, indexPath) in
+            let alertController = UIAlertController(title: "¡Atención!", message: "\n¿Deseas eliminar este contacto?", preferredStyle: .alert)
             
-            let key = self.arrayKeys[indexPath.row]
-            
-            if (key != "") {
+            let okAction = UIAlertAction(title: "Sí", style: UIAlertAction.Style.default) {
+                UIAlertAction in
                 
-                let alertController = UIAlertController(title: "¡Atención!", message: "\n¿Deseas eliminar este contacto?", preferredStyle: .alert)
+                let keyContacto = self.arrayKeys[indexPath.row]
                 
-                let okAction = UIAlertAction(title: "Sí", style: UIAlertAction.Style.default) {
-                    UIAlertAction in
-                    
-                    let keyContacto = self.arrayKeys[indexPath.row]
-                    
-                    let uid = Auth.auth().currentUser?.uid
-                    self.ref = Database.database().reference().child("Usuarios").child(uid!).child(keyContacto)
-                    self.ref.removeValue()
-                }
-                
-                let noAction = UIAlertAction(title: "No", style: UIAlertAction.Style.default) {
-                    UIAlertAction in
-                    
-                }
-                
-                alertController.addAction(okAction)
-                alertController.addAction(noAction)
-                
-                self.present(alertController, animated: true, completion: nil)
+                let uid = Auth.auth().currentUser?.uid
+                self.ref = Database.database().reference().child("Usuarios").child(uid!).child(keyContacto)
+                self.ref.removeValue()
             }
             
+            let noAction = UIAlertAction(title: "No", style: UIAlertAction.Style.default) {
+                UIAlertAction in
+                
+            }
             
+            alertController.addAction(okAction)
+            alertController.addAction(noAction)
+            
+            self.present(alertController, animated: true, completion: nil)
         }
         
         borrar.backgroundColor = UIColor(red: 0/255, green: 63/255, blue: 97/255, alpha: 1.0)
